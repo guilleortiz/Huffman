@@ -52,8 +52,8 @@ public class ArbolHuffman {
             crearListaHuffman(p, this.listaCodHuffman, sbCod);
             String codigo = caracterAcodigo(vectTexto);
 
-            //El c骴igo generado como una cadena de caracteres.
-            System.out.println("C骴igo huffman generado como cadena de caracteres: ");
+            //El c贸digo generado como una cadena de caracteres.
+            System.out.println("C贸digo huffman generado como cadena de caracteres: ");
             System.out.println(codigo);
             BitSet bitset = new BitSet(codigo.length());
 
@@ -75,6 +75,11 @@ public class ArbolHuffman {
             //Yapa: Escritura de huffman en archivo de acceso aleatorio siguiendo
             //el formato de archivo requerido en el final. En este caso se considera
             //que el archivo original se denomina PRUEBCOM.txt
+            
+            // The RandomAccessFile class in the Java IO API allows you to move around 
+            // a file and read from it or write to it as you please. You can replace
+            // existing parts of a file too.
+            // This is not possible with the FileInputStream or FileOutputStream.
             try {
                 RandomAccessFile rda = new RandomAccessFile("/home/agustin/Escritorio/pruebaHuffman.u21", "rw");
                 rda.writeChar('h');
@@ -126,11 +131,11 @@ public class ArbolHuffman {
                 byte b;
                 StringBuilder sbTiraBit = new StringBuilder();
                 try {
-                    System.out.println("C骴igo leido desde archivo de acceso aleatorio: ");
+                    System.out.println("C贸digo leido desde archivo de acceso aleatorio: ");
                     while (true) {
                         b = rda.readByte();
                         BitSet bitset1 = new BitSet(8);
-                        //Tener en cuenta que si los ultimos Bits del c骴igo no llegan 
+                        //Tener en cuenta que si los ultimos Bits del c贸digo no llegan 
                         //a 8 se completan con ceros
                         for (int j = 0; j < 8; j++) {
                             if ((b & (1 << j)) > 0) {
